@@ -21,20 +21,22 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="177dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
+        android:layout_columnWeight="1"
         android:layout_gravity="fill_horizontal"
         android:text="@string/btn" />
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="240dp"
-        android:layout_height="109dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_row="1"
+        android:layout_columnWeight="1"
         android:layout_column="1"
-        android:layout_gravity="end"
+        android:layout_gravity="fill_horizontal"
         app:srcCompat="@drawable/flag" />
 
     <CheckBox
