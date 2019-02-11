@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -16,6 +17,7 @@ public class SecondActivity extends AppCompatActivity {
 
     EditText SecondEmail;
     ImageButton mImageButton;
+    Button chatBtn;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final String ACTIVITY_NAME = "SecondActivity";
 
@@ -28,6 +30,7 @@ public class SecondActivity extends AppCompatActivity {
         SecondEmail = findViewById(R.id.SecondEmail);
         SecondEmail.setText(savedEmail);
         mImageButton = findViewById(R.id.mImageButton);
+        chatBtn = findViewById(R.id.chatBtn);
 
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,8 +39,20 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openChatRoomActivity();
+            }
+        });
+
         Log.e(ACTIVITY_NAME,"onCreate called");
 
+    }
+
+    public void openChatRoomActivity() {
+        Intent nextPage = new Intent(SecondActivity.this, ChatRoomActivity.class);
+        startActivity(nextPage);
     }
 
     private void dispatchTakePictureIntent() {
