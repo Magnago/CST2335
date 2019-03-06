@@ -5,14 +5,14 @@ public class Message {
 
     private String message;
     private boolean isSend;
-
-    public Message() {
-
-    }
+    private long messageID;
 
     public Message(String message, boolean isSend) {
         this.message = message;
         this.isSend = isSend;
+    }
+
+    public Message() {
     }
 
     public String getMessage() {
@@ -29,5 +29,13 @@ public class Message {
 
     public void setSend(boolean send) {
         isSend = send;
+    }
+
+    public long getMessageID(){
+        return messageID;
+    }
+
+    public void setMessageID(long msgID){
+        this.messageID = msgID;
     }
 }

@@ -1,9 +1,11 @@
 package com.example.androidlabs;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     Button receiveBtn;
     Message msg;
     List<Message> messageList;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,31 +38,57 @@ public class ChatRoomActivity extends AppCompatActivity {
         sendBtn = findViewById(R.id.sendBtn);
         receiveBtn = findViewById(R.id.receiveBtn);
         messageList = new ArrayList<>();
+        db = new DatabaseHelper(this);
 
-        final ListAdapter aListAdapter = new ListAdapter(messageList, getApplicationContext());
-        listView.setAdapter( aListAdapter);
+//        final ListAdapter aListAdapter = new ListAdapter(messageList, getApplicationContext());
+//        listView.setAdapter( aListAdapter);
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                msg = new Message(messageText.getText().toString(), true);
-                messageList.add(msg);
-                messageText.setText("");
-                aListAdapter.notifyDataSetChanged();
+//                msg = new Message(messageText.getText().toString(), true);
+//                messageList.add(msg);
+//                messageText.setText("");
+//                aListAdapter.notifyDataSetChanged();
+                if (!messageText.getText().toString().equals("")) {
+                    db.insertData(messageText.getText().toString(), true);
+                    messageText.setText("");
+                    messageList.clear();
+                    viewData();
+                }
             }
         });
 
         receiveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                msg = new Message(messageText.getText().toString(), false);
-                messageList.add(msg);
-                messageText.setText("");
-                aListAdapter.notifyDataSetChanged();
+//                msg = new Message(messageText.getText().toString(), false);
+//                messageList.add(msg);
+//                messageText.setText("");
+//                aListAdapter.notifyDataSetChanged();
+                if (!messageText.getText().toString().equals("")) {
+                    db.insertData(messageText.getText().toString(), false);
+                    messageText.setText("");
+                    messageList.clear();
+                    viewData();
+                }
             }
         });
+        viewData();
+        Log.e("ChatRoomActivity","onCreate");
 
+    }
 
+    private void viewData(){
+        Cursor cursor = db.viewData();
+        if (cursor.getCount() != 0){
+            while (cursor.moveToNext()){
+                Message msg = new Message(cursor.getString(1), cursor.getInt(2) == 0);
+                messageList.add(msg);
+                ListAdapter listAdapter = new ListAdapter(messageList, getApplicationContext());
+                listView.setAdapter(listAdapter);
+            }
+        }
     }
 
     protected class ListAdapter extends BaseAdapter {
