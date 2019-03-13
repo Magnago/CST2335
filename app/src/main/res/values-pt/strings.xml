@@ -16,4 +16,10 @@
     <string name="EnterYourName">Digite seu nome: </string>
     <string name="YourName">Seu nome: </string>
     <string name="YourProfile">Seu perfil: </string>
+    <string name="icon1">Icone 1</string>
+    <string name="icon2">Icone 2</string>
+    <string name="icon3">Icone 3</string>
+    <string name="about">Sobre</string>
+    <string name="newMessage">Qual a nova mensagem?</string>
+    <string name="typeHere">Digite aqui</string>
 </resources>

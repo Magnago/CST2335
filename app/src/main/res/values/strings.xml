@@ -16,4 +16,10 @@
     <string name="EnterYourName">Enter your name: </string>
     <string name="YourName">Your name: </string>
     <string name="YourProfile">Your profile: </string>
+    <string name="icon1">Icon 1</string>
+    <string name="icon2">Icon 2</string>
+    <string name="icon3">Icon 3</string>
+    <string name="about">ABOUT</string>
+    <string name="newMessage">What is the new message?</string>
+    <string name="typeHere">You can type here</string>
 </resources>

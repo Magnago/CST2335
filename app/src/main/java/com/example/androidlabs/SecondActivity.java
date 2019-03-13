@@ -18,6 +18,7 @@ public class SecondActivity extends AppCompatActivity {
     EditText SecondEmail;
     ImageButton mImageButton;
     Button chatBtn;
+    Button toolBar;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final String ACTIVITY_NAME = "SecondActivity";
 
@@ -31,6 +32,7 @@ public class SecondActivity extends AppCompatActivity {
         SecondEmail.setText(savedEmail);
         mImageButton = findViewById(R.id.mImageButton);
         chatBtn = findViewById(R.id.chatBtn);
+        toolBar = findViewById(R.id.ToolBarBtn);
 
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,12 +48,24 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        toolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTestToolbar();
+            }
+        });
+
         Log.e(ACTIVITY_NAME,"onCreate called");
 
     }
 
     public void openChatRoomActivity() {
         Intent nextPage = new Intent(SecondActivity.this, ChatRoomActivity.class);
+        startActivity(nextPage);
+    }
+
+    public void openTestToolbar() {
+        Intent nextPage = new Intent(SecondActivity.this, TestToolbar.class);
         startActivity(nextPage);
     }
 
