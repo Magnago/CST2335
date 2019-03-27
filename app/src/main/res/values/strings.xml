@@ -22,4 +22,8 @@
     <string name="about">ABOUT</string>
     <string name="newMessage">What is the new message?</string>
     <string name="typeHere">You can type here</string>
+    <string name="currTemp">Current temperature is:</string>
+    <string name="minTemp">Minimum temperature is:</string>
+    <string name="maxTemp">Maximum temperature is:</string>
+    <string name="uvRating">UV rating is:</string>
 </resources>

@@ -19,6 +19,7 @@ public class SecondActivity extends AppCompatActivity {
     ImageButton mImageButton;
     Button chatBtn;
     Button toolBar;
+    public Button weatherForecast;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final String ACTIVITY_NAME = "SecondActivity";
 
@@ -33,6 +34,7 @@ public class SecondActivity extends AppCompatActivity {
         mImageButton = findViewById(R.id.mImageButton);
         chatBtn = findViewById(R.id.chatBtn);
         toolBar = findViewById(R.id.ToolBarBtn);
+        weatherForecast = findViewById(R.id.Weather);
 
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +50,15 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+
+        weatherForecast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWeatherForecastActivity();
+            }
+        });
+        Log.e(ACTIVITY_NAME,"In function: onCreate");
+
         toolBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +68,11 @@ public class SecondActivity extends AppCompatActivity {
 
         Log.e(ACTIVITY_NAME,"onCreate called");
 
+    }
+
+    public void openWeatherForecastActivity() {
+        Intent nextPage = new Intent(SecondActivity.this, WeatherForecast.class);
+        startActivity(nextPage);
     }
 
     public void openChatRoomActivity() {
